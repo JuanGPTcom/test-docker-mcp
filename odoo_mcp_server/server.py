@@ -128,16 +128,13 @@ class OdooMCPServer:
             await self.server.run(
                 read_stream,
                 write_stream,
-                initialize_params=types.InitializeParams(
+                mcp.server.stdio.InitializationOptions(
                     server_name="odoo-mcp-server",
                     server_version="1.0.0",
-                    capabilities={
-                        "tools": {
-                            "call": {
-                                "enabled": True
-                            }
-                        }
-                    }
+                    capabilities=self.server.get_capabilities(
+                        notification_options=mcp.server.stdio.NotificationOptions(),
+                        experimental_capabilities={}
+                    )
                 )
             )
 
