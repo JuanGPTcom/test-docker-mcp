@@ -125,18 +125,7 @@ class OdooMCPServer:
     async def run(self):
         """Run the MCP server."""
         async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
-            await self.server.run(
-                read_stream,
-                write_stream,
-                mcp.server.stdio.InitializationOptions(
-                    server_name="odoo-mcp-server",
-                    server_version="1.0.0",
-                    capabilities=self.server.get_capabilities(
-                        notification_options=mcp.server.stdio.NotificationOptions(),
-                        experimental_capabilities={}
-                    )
-                )
-            )
+            await self.server.run(read_stream, write_stream)
 
 
 def main():
