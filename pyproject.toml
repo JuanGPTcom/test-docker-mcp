@@ -1,0 +1,19 @@
+[project]
+name = "odoo-mcp-server"
+version = "1.0.0"
+description = "MCP server for Odoo XML-RPC API"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.25.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0"
+]
+
+[project.scripts]
+odoo-mcp-server = "odoo_mcp_server.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
